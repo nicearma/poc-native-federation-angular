@@ -1,0 +1,13 @@
+This is the content of Page 1 from PDP MF
+
+<div>Product details</div>
+<div>Then recommendations</div>
+<ng-template #recoComponent></ng-template>
+<div>Product documents</div>
+
+<button (click)="testInteractivity()" [disabled]="interactive">
+  Test interactivity
+</button>
+@if(interactive) {
+<div>Interactive !</div>
+}

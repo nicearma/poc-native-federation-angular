@@ -5,8 +5,8 @@ import { EmptyComponent } from '../components/empty/empty.component';
 export const routes: Routes = [
   {
     path: 'pdp',
-    loadComponent: () =>
-      loadRemoteModule('mf-pdp19', './Component').then((m) => m.AppComponent),
+    loadChildren: () =>
+      loadRemoteModule('mf-pdp19', './PdpRoutes').then((m) => m.routes),
   },
   {
     path: 'reco',

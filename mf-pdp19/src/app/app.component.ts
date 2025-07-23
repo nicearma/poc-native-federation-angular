@@ -1,26 +1,25 @@
-import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ViewContainerRef} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {loadRemoteModule} from '@angular-architects/native-federation';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { loadRemoteModule } from '@angular-architects/native-federation';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'mf-pdp19';
 
-  @ViewChild('placeholder', {read: ViewContainerRef})
+  @ViewChild('reco-component', { read: ViewContainerRef })
   viewContainerRef!: ViewContainerRef;
-
-  constructor() {
-    console.log('Attempting to load custom element from mf-reco19');
-    // We'll leave this commented to avoid the error and focus on making createComponent work first
-    //
-  }
 
   async loadCustomElement() {
     try {
@@ -31,17 +30,5 @@ export class AppComponent implements AfterViewInit {
     } catch (error) {
       console.error('Error loading custom element:', error);
     }
-  }
-
-  async ngAfterViewInit() {
-      this.loadCustomElement();
-
-      const remove = await loadRemoteModule('mf-reco19',
-        './ByComp',
-      );
-
-      const comp = this.viewContainerRef.createComponent(remove.ByCompComponent, {});
-      comp.setInput('name', 'BY_COMP');
-
   }
 }

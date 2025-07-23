@@ -5,8 +5,8 @@ module.exports = withNativeFederation({
   name: 'mf-pdp19',
 
   exposes: {
-    './Component': './src/app/app.component.ts',
-    './MfPdpRoutedModule': './src/app/app.routes.ts',
+    "./Component": "./src/app/app.component.ts",
+    "./PdpRoutes": "./src/app/app.routes.ts",
   },
 
   shared: {

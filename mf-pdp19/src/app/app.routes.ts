@@ -1,33 +1,19 @@
-import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from './app.component';
-import {loadRemoteModule} from '@angular-architects/native-federation';
-import {NgModule} from '@angular/core';
+import { Routes } from '@angular/router';
+import { Page1Component } from './components/page1/page1.component';
+import { Page2Component } from './components/page2/page2.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
-        path: 'reco',
-        loadComponent: () =>
-          loadRemoteModule('mf-reco19', './Component').then((m) => m.AppComponent),
-      },
-    ],
-
+    path: 'page1',
+    component: Page1Component,
   },
   {
-    path: 'pdp/reco',
-    loadComponent: () =>
-      loadRemoteModule('mf-reco19', './Component').then((m) => m.AppComponent),
+    path: 'page2',
+    component: Page2Component,
   },
-
-
+  {
+    path: '**',
+    component: AppComponent,
+  },
 ];
-
-
-@NgModule({
-  imports: [AppComponent, RouterModule.forChild(routes)],
-})
-export class MfPdpRoutedModule {
-}

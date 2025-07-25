@@ -12,7 +12,8 @@
     "src/server.ts",
     "src/app/native-element.ts",
     "src/app/by-tag/by-tag.component.ts",
-    "src/app/by-comp/by-comp.component.ts"
+    "src/app/by-comp/by-comp.component.ts",
+    "src/app/urlMatcher.ts"
   ],
   "include": [
     "src/**/*.d.ts"

@@ -1,20 +1,44 @@
-import { Routes } from '@angular/router';
+import { Routes, UrlMatcher } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { EmptyComponent } from '../components/empty/empty.component';
+import { urlMatcher as urlMatcherShell } from './urlMatcher';
 
-export const routes: Routes = [
+export const generateRoutes: (urlMatcher: UrlMatcher) => Routes = (
+  urlMatcher
+) => [
   {
     path: 'pdp',
     loadChildren: () =>
       loadRemoteModule('mf-pdp19', './PdpRoutes').then((m) => m.routes),
   },
   {
-    path: 'reco',
-    loadComponent: () =>
-      loadRemoteModule('mf-reco19', './Component').then((m) => m.AppComponent),
+    urlMatcher: urlMatcherShell,
+    component: EmptyComponent,
   },
+  // {
+  //   urlMatcher: urlMatcher,
+  //   loadComponent: () =>
+  //     loadRemoteModule('mf-reco19', './Component').then((m) => m.AppComponent),
+  // },
   {
     path: '**',
     component: EmptyComponent,
   },
 ];
+
+// export const routes: Routes = [
+//   {
+//     path: 'pdp',
+//     loadChildren: () =>
+//       loadRemoteModule('mf-pdp19', './PdpRoutes').then((m) => m.routes),
+//   },
+//   {
+//     path: 'reco',
+//     loadComponent: () =>
+//       loadRemoteModule('mf-reco19', './Component').then((m) => m.AppComponent),
+//   },
+//   {
+//     path: '**',
+//     component: EmptyComponent,
+//   },
+// ];

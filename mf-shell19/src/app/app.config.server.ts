@@ -1,11 +1,11 @@
 import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
-import { appConfig } from './app.config';
+import { generateAppConfig } from './app.config';
+import { Routes } from '@angular/router';
 
 const serverConfig: ApplicationConfig = {
-  providers: [
-    provideServerRendering(),
-  ]
+  providers: [provideServerRendering()],
 };
 
-export const config = mergeApplicationConfig(appConfig, serverConfig);
+export const generateAppServerConfig = (routes: Routes) =>
+  mergeApplicationConfig(generateAppConfig(routes), serverConfig);

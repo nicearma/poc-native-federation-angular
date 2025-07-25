@@ -3,12 +3,11 @@ import { initNodeFederation } from '@softarc/native-federation-node';
 console.log('Starting SSR for Shell');
 
 (async () => {
-
+  console.log('init federation - server');
   await initNodeFederation({
-    remotesOrManifestUrl: './dist/mf-shell19/browser/federation.manifest.json',
+    remotesOrManifestUrl: './public/federation.manifest.json',
     relBundlePath: './dist/mf-shell19/browser/',
   });
 
   await import('./bootstrap-server');
-
 })();
